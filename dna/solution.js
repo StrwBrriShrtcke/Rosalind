@@ -1,5 +1,5 @@
 import fs from 'node:fs'
-const string = fs.readFileSync('./rosalind_dna.txt', 'utf8');
+const string = fs.readFileSync('./dataset.txt', 'utf8');
 
 const stringLength = string.length
 let adenine = 0;
