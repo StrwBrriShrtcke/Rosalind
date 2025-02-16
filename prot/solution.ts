@@ -4,14 +4,16 @@ const rnaString: string = fs.readFileSync('./dataset.txt', 'utf8');
 const rnaCodon = fs.readFileSync("./rnacodon.txt", "utf8")
 rnaCodon.trim();
 
-const rna = rnaCodon.replaceAll(/\w{3}\ \w{4}/g, "").replaceAll(/\s/g, "")
+const rna = rnaCodon.
+replaceAll(/\w{3}\ \w{4}/g, "").
+replaceAll(/\s/g, "")
 
 const codonTable: object = {}
 
 // Function to make the codon table from rnacodon.txt into an object
-function txtToObj(start: number) {
-  return Object.defineProperties(codonTable
-    , { [rna.substring(start * 4, start * 4 + 3)]: { value: rna[start * 4 + 3] } })
+function txtToObj(number: number) {
+  const start = number * 4
+  return codonTable[rna.substring(start, start + 3)] = rna[start + 3]
 }
 
 // Iterate through all elements in codonTable
@@ -50,8 +52,6 @@ for (let i = 0; i < rnaArray.length; i++) {
     rnaArray[i] = "stop"
   }
 }
-
 // removing stop codons and transforming array into string
 const answer = rnaArray.filter((x) => x !== "stop").join("")
-console.log(answer)
 fs.writeFileSync("./answer.txt", answer)
