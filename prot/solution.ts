@@ -19,9 +19,9 @@ const rnaArray: string[] = []
 
 // Seperate rnaString into individual RNA sequences and transform these sequences into its corresponding amino acid
 for (let i: number = 0; i <= rnaString.length; i+=3) {
-const threeLetters = rnaString.substring(i , i + 3)
-  if (threeLetters in codonTable) {
-    rnaArray.push(codonTable[threeLetters])
+const codon = rnaString.substring(i , i + 3)
+  if (codon in codonTable) {
+    rnaArray.push(codonTable[codon])
   }
 }
 
