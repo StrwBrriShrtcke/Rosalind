@@ -1,5 +1,5 @@
 import * as fs from "node:fs";
-const dnaString: string = fs.readFileSync("./sample.txt", "utf8").trim();
+const dnaString: string = fs.readFileSync("../dataset/revc-dataset.txt", "utf8").trim();
 const dnaStringArray: string[] = dnaString.split("")
 dnaStringArray.reverse();
 
@@ -8,4 +8,5 @@ type Nucleotide = "A" | "T" | "G" | "C"
 const complement: Complement = { A: "T", T: "A", G: "C", C: "G" }
 const answerArray = dnaStringArray.map((nucleotide: Nucleotide) => complement[nucleotide])
 const answer = answerArray.join("")
-fs.writeFileSync("./answer.txt", answer)
+console.log(answer)
+fs.writeFileSync("../answer/revc-answer.txt", answer)
